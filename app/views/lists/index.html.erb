@@ -3,10 +3,12 @@
     <h1 class="mt-3">Devin's Movies Watch List Website</h1>
     <% @lists.each do |list| %>
     <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" /> %>
+      <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
       <div class="card-product-infos">
         <h2><%= list.name %></h2>
         <%= link_to "Open", list_path(list.id), class: "btn btn-primary" %>
+        <%= link_to "X", list_path(list), method: :delete, data: { confirm: "Are you sure you want to delete #{list.name}?" }  %>
       </div>
     </div>
     <% end %>

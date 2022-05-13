@@ -2,7 +2,8 @@
     <h1 class="mt-3"><%= @list.name %> List</h1>
     <div class="cards">
       <div class="card-trip">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <%# <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" /> %>
+        <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
         <div class="card-trip-infos">
           <div>
             <h2><%= @list.name %></h2>
