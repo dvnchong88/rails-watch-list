@@ -2,6 +2,7 @@ class BookmarksController < ApplicationController
   def new
     @bookmark = Bookmark.new
     @list = List.find(params[:list_id])
+    @movies = Movie.where.not(id: @list.movies).order(title: :asc)
   end
 
   def create
@@ -11,6 +12,7 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to list_path(@list)
     else
+      @movies = Movie.where.not(id: @list.movies).order(title: :asc)
       render :new
     end
   end
